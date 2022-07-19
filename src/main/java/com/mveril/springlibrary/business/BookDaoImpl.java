@@ -10,17 +10,17 @@ public class BookDaoImpl implements DAOService<Book> {
     private Map<Integer,Book> bookMap = new HashMap<Integer,Book>();
     private int index = 0;
     @Override
-    public Collection<Book> GetAll() {
+    public Collection<Book> getAll() {
         return bookMap.values();
     }
 
     @Override
-    public Optional<Book> GetById(int id) {
+    public Optional<Book> getById(int id) {
        return Optional.ofNullable(bookMap.getOrDefault(id,null));
     }
 
     @Override
-    public void Add(Book item) {
+    public void add(Book item) {
         index++;
         item.setId(index);
         bookMap.put(index,item);
@@ -32,6 +32,7 @@ public class BookDaoImpl implements DAOService<Book> {
         if(result){
             bookMap.put(id,newValue);
         }
+        return result;
     }
 
     @Override
